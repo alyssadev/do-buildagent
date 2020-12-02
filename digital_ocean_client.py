@@ -16,8 +16,8 @@ class DigitalOceanClient:
         :type base_url: str
         """
         self.base_url = 'https://cloud.digitalocean.com/v1/oauth'
-        self.redirect_uri = 'http://localhost:5000/digitalocean'
         self.authorize_url = f'{self.base_url}/authorize'
+        self.redirect_uri = 'https://buildagent.alyssasmith.id.au/login'
         self.client_id = client_id
         self.client_secret = client_secret
 

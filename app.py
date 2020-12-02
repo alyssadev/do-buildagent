@@ -23,12 +23,12 @@ def check_token():
         session["scope"] = scope
         session["expiry"] = expiry
         session["refresh_token"] = refresh_token
-        return True
+    return True
 
 @app.route('/', methods=['GET'])
 def index():
     error = request.args.get('error', None)
-    if check_token:
+    if check_token():
         headers = {"Authorization": f"Bearer {session['token']}"}
         api_droplet_list_url = "https://api.digitalocean.com/v2/droplets"
 
@@ -51,8 +51,6 @@ def login():
     error = None
     if code:
         try:
-            client = DigitalOceanClient(DIGITAL_OCEAN_CLIENT_ID,
-                                        DIGITAL_OCEAN_CLIENT_SECRET)
             token, scope, expiry, refresh_token = client.finish_oauth(code)
             session["token"] = token
             session["scope"] = scope
