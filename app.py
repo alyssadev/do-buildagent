@@ -2,14 +2,12 @@
 from flask import Flask, request, render_template, redirect, url_for, session
 from digital_ocean_client import DigitalOceanClient, ApiError
 import requests
-import os
+from os import environ
 from random import choice
 from string import ascii_letters, digits, punctuation
 from datetime import datetime
 
-DO_OAUTH_CID = os.environ["DO_OAUTH_CID"]
-DO_OAUTH_CS = os.environ["DO_OAUTH_CS"]
-client = DigitalOceanClient(DO_OAUTH_CID, DO_OAUTH_CS)
+client = DigitalOceanClient(environ["DO_OAUTH_CID"], environ["DO_OAUTH_CS"], domain="https://buildagent.alyssasmith.id.au")
 
 app = Flask(__name__)
 app.secret_key = "".join(choice(ascii_letters + digits + punctuation) for _ in range(32))

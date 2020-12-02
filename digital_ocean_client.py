@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 
 class DigitalOceanClient:
-    def __init__(self, client_id, client_secret):
+    def __init__(self, client_id, client_secret, domain="http://localhost:5000"):
         """
         Create a new LoginClient.  These clients do not make any requests
         on creation, and can safely be created and thrown away as needed.
@@ -17,7 +17,7 @@ class DigitalOceanClient:
         """
         self.base_url = 'https://cloud.digitalocean.com/v1/oauth'
         self.authorize_url = f'{self.base_url}/authorize'
-        self.redirect_uri = 'https://buildagent.alyssasmith.id.au/login'
+        self.redirect_uri = f'{domain}/login'
         self.client_id = client_id
         self.client_secret = client_secret
 
