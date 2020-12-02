@@ -1,0 +1,11 @@
+<html>
+    <div>
+    {% if servers %}
+        {% for server in servers %}
+            <p>{{ server.name }} - Status: {{ server.status }}</p>
+        {% endfor %}
+    {% else %}
+    <p>No Servers Found On Your Account</p>
+    {% endif %}
+    </div>
+</html>
